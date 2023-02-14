@@ -81,6 +81,7 @@ int main() {
     std::cout << "Generating " << number_amount << " pseudorandom numbers using a quite expensive hash function,\nand calculating their sum.\n\n";
 
     // Single-thread benchmark
+    // -----------------------
     const jobs::Timer benchmark_timer;
     // Generate numbers
     for (uint32_t i = 0; i != number_amount; i++) {
@@ -91,7 +92,10 @@ int main() {
     const std::chrono::duration<double, std::milli> benchmark_duration = benchmark_timer.get_elapsed();
     std::cout << "Single-thread benchmark: " << benchmark_duration.count() << " ms\n";
 
+    std::fill(numbers.begin(), numbers.end(), 0ull);
+
     // Scheduler job graph setup
+    // -------------------------
     uint64_t scheduler_result = 0;
     jobs::JobGraph job_graph;
     // Node to generate numbers
@@ -107,6 +111,7 @@ int main() {
     scheduler.set_job_graph(&job_graph);
 
     // Run scheduler
+    // -------------
     const jobs::Timer scheduler_timer;
     scheduler.run();
     const std::chrono::duration<double, std::milli> scheduler_duration = scheduler_timer.get_elapsed();
