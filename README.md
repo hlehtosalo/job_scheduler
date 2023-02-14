@@ -4,7 +4,7 @@ This was mostly made as an excercise, although I might update it if and when I s
 
 The scheduler is based on the Chase-Lev work-stealing deque, specifically the optimized implementation with more relaxed memory operations, described here: https://fzn.fr/readings/ppopp13.pdf
 
-A notable difference in my deque implementation is that it has a fixed capacity instead of growing dynamically. I chose this because the scheduler is meant for game engine use, where I consider the more stable performance important, and the unbounded capacity unnecessary. The dequeue capacity, along with other compile-time parameters, is defined in Config.h.
+A notable difference in my deque implementation is that it has a fixed capacity instead of growing dynamically. I chose this because the scheduler is meant for game engine use, where I consider the more stable performance important, and the unbounded capacity unnecessary. The deque capacity, along with other compile-time parameters, is defined in Config.h.
 
 The scheduler runs predefined (or defined between runs, i.e. frames) job dependency graphs: Directed acyclic graphs, where each node corresponds to a job. Any job can spawn new jobs in two different ways: As sub-jobs that need to be completed before the node they belong to is considered completed, and as free jobs whose only synchronization guarantee is that they are completed before the end of the whole run. Because the jobs corresponding to nodes typically spawn new jobs, they are called root jobs in the code.
 
