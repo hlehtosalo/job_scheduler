@@ -10,6 +10,6 @@ The scheduler runs predefined (or defined between runs, i.e. frames) job depende
 
 One limitation of the scheduler is that it's not particularly ergonomic to write parallel divide-and-conquer algorithms on it. User code needs to handle buffers for intermediate results, as opposed to simply waiting for the recursively called functions to return their results. An example of this, a parallel sum, can be seen in the benchmark / test code in Main.cpp.
 
-The code in Main.cpp is a simple correctness test, and performance benchmark against a basic single-threaded implementation. A large number of simple but quite expensive hashes are computed and written to a vector, followed by adding all the numbers together. It's not the best of tests, but it demonstrates the basic usage of the scheduler and depencencies, as well as the logging of profiling data.
+The code in Main.cpp is a simple correctness test, and performance benchmark against a basic single-threaded implementation. A large number of simple but quite expensive hashes are computed and written to a vector, followed by adding all the numbers together. It's not the best of tests, but it demonstrates the basic usage of the scheduler and job depencencies, as well as the logging of profiling data.
 
 Future work would likely focus on a more flexible dependency model, such as being able to modify the job graph while it's executed, and on utility code to make high-level algorithms easier to implement.
