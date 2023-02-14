@@ -1,4 +1,5 @@
 # Lock-free job scheduler
+Personal project, not meant for distribution!
 This was mostly made as an excercise, although I might update it if and when I start using it in projects.
 
 The scheduler is based on the Chase-Lev work-stealing deque, specifically the optimized implementation with more relaxed memory operations, described here: https://fzn.fr/readings/ppopp13.pdf
