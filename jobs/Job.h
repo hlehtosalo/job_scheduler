@@ -20,7 +20,7 @@ namespace jobs {
 	constexpr size_t job_size = ((min_job_size + cacheline_size - 1) / cacheline_size) * cacheline_size;
 	constexpr size_t param_buffer_size = job_size - job_core_size;
 
-	struct alignas(job_size) Job {
+	struct alignas(cacheline_size) Job {
 		void run(JobAllocator& allocator, JobQueue& queue, WorkerInfo& worker_info) const;
 
 		uint8_t param_buffer[param_buffer_size];
